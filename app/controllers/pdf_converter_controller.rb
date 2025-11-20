@@ -58,7 +58,7 @@ class PdfConverterController < ApplicationController
 
     begin
       # Create DOCX using rubyzip - DOCX is essentially a ZIP file with XML
-      Zip::File.open(temp_file.path, Zip::File::CREATE) do |zipfile|
+      Zip::File.open(temp_file.path, create: true) do |zipfile|
         # Add required DOCX structure files
         zipfile.get_output_stream('[Content_Types].xml') do |f|
           f.puts '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
